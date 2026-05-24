@@ -294,7 +294,7 @@ export default function App() {
           Entre Mujeres Legal
         </div>
         <a
-          href="https://wa.me/525527459155"
+          href="https://wa.me/522228633646"
           target="_blank" rel="noopener noreferrer"
           style={{
             fontFamily: "Georgia,serif", fontSize: "12px",
@@ -371,7 +371,7 @@ export default function App() {
         </p>
 
         <a
-          href="https://wa.me/525527459155"
+          href="https://wa.me/522228633646"
           target="_blank" rel="noopener noreferrer"
           style={{
             fontFamily: "Georgia,serif", fontSize: "12px",
@@ -444,7 +444,7 @@ export default function App() {
               ))}
             </ul>
             <a
-              href="https://wa.me/525527459155"
+              href="https://wa.me/522228633646"
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-block", marginTop: "28px",
@@ -489,7 +489,7 @@ export default function App() {
             </div>
             <div style={{ borderTop: `1px solid ${C.gold}55`, paddingTop: "24px", display: "flex", justifyContent: "flex-end" }}>
               <a
-                href="https://wa.me/525527459155?text=Hola,%20quiero%20agendar%20una%20videoconsulta"
+                href="https://wa.me/522228633646?text=Hola,%20quiero%20agendar%20una%20videoconsulta"
                 target="_blank" rel="noopener noreferrer"
                 style={{
                   background: C.charcoal, color: C.cream, textDecoration: "none",
@@ -550,7 +550,7 @@ export default function App() {
           <div style={{ fontFamily: "Georgia,serif", fontSize: "12px", letterSpacing: "0.2em", color: C.gold, textTransform: "uppercase", marginBottom: "20px" }}>Contacto</div>
           {[
             { text: "Puebla, Pue., México", href: null },
-            { text: "55 2745 9155", href: "tel:+525527459155" },
+            { text: "222 863 3646", href: "tel:+522228633646" },
             { text: "entremujereslegal@gmail.com", href: "mailto:entremujereslegal@gmail.com" },
             { text: "Lun–Vie 9:00–18:00", href: null },
           ].map(({ text, href }) => (
