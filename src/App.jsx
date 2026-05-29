@@ -444,7 +444,7 @@ export default function App() {
               ))}
             </ul>
             <a
-              href="https://wa.me/522228633646"
+              href="https://wa.me/522228633646?text=Hola%20buen%20dia,%20quisiera%20solicitar%20un%20escrito"
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-block", marginTop: "28px",
