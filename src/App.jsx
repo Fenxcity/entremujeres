@@ -367,7 +367,7 @@ export default function App() {
             textDecorationColor: `${C.rose}66`, textUnderlineOffset: "3px",
           }}
         >
-          ¿No sabes dónde denunciar? Pregúntale al chatbot de Entre Mujeres Legal<br/>¿El Ministerio Público no te recibió tu denuncia?
+          ¿No sabes dónde denunciar?<br/>¿El Ministerio Público no te recibió tu denuncia?<br/>Pregúntale al chatbot de Entre Mujeres Legal
         </p>
 
         <a
