@@ -1,8 +1,10 @@
-// ─────────────────────────────────────────────────────────────────────────────
+﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
 // Modelo:  claude-haiku-4-5-20251001
 // ─────────────────────────────────────────────────────────────────────────────
+
+import { createSign } from 'crypto';
 
 const SYSTEM_PROMPT = `Eres la asistente jurídica especializada de Entre Mujeres Legal, plataforma de asesoría para mujeres víctimas de violencia de género en Puebla, México. Respondes siempre en español, con tono empático y profesional.
 
@@ -279,6 +281,71 @@ CIERRE: Concluye siempre recordando que esta orientación es general y no sustit
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+async function logToSheets(question, answer) {
+  try {
+    const keyJson = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!keyJson || !spreadsheetId) return;
+
+    const sa = JSON.parse(keyJson);
+    const now = Math.floor(Date.now() / 1000);
+
+    const toB64url = (buf) =>
+      buf.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+
+    const header  = toB64url(Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })));
+    const claims  = toB64url(Buffer.from(JSON.stringify({
+      iss:   sa.client_email,
+      scope: 'https://www.googleapis.com/auth/spreadsheets',
+      aud:   'https://oauth2.googleapis.com/token',
+      exp:   now + 3600,
+      iat:   now,
+    })));
+
+    const signingInput = `${header}.${claims}`;
+    const sign = createSign('RSA-SHA256');
+    sign.update(signingInput);
+    const jwt = `${signingInput}.${toB64url(sign.sign(sa.private_key))}`;
+
+    const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    new URLSearchParams({
+        grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+        assertion:  jwt,
+      }),
+    });
+
+    if (!tokenRes.ok) {
+      console.error('[EML Sheets] Token error:', await tokenRes.text());
+      return;
+    }
+
+    const { access_token } = await tokenRes.json();
+    const timestamp = new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' });
+
+    const sheetRes = await fetch(
+      `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Consultas!A:C:append?valueInputOption=USER_ENTERED`,
+      {
+        method:  'POST',
+        headers: {
+          Authorization:  `Bearer ${access_token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ values: [[timestamp, question, answer]] }),
+      }
+    );
+
+    if (!sheetRes.ok) {
+      console.error('[EML Sheets] Write error:', await sheetRes.text());
+    }
+  } catch (err) {
+    console.error('[EML Sheets] Error:', err.message);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default async function handler(req, res) {
   // CORS preflight
   if (req.method === "OPTIONS") {
@@ -334,8 +401,12 @@ export default async function handler(req, res) {
       });
     }
 
-    const data = await response.json();
+    const data  = await response.json();
     const reply = data.content?.[0]?.text ?? "Sin respuesta.";
+
+    // Registrar consulta en Google Sheets (silencioso si falla)
+    await logToSheets(lastMsg?.content || '', reply);
+
     return res.status(200).json({ reply });
 
   } catch (err) {
