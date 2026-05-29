@@ -552,7 +552,7 @@ export default function App() {
             { text: "Puebla, Pue., México", href: null },
             { text: "222 863 3646", href: "tel:+522228633646" },
             { text: "entremujereslegal@gmail.com", href: "mailto:entremujereslegal@gmail.com" },
-            { text: "Lun–Vie 9:00–18:00", href: null },
+            { text: "Disponible 24 horas", href: null },
           ].map(({ text, href }) => (
             href
               ? <a key={text} href={href} style={{ display: "block", fontFamily: "Georgia,serif", fontSize: "13px", color: C.mist, marginBottom: "9px", textDecoration: "none" }}>{text}</a>
