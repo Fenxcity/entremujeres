@@ -10,7 +10,7 @@ const C = {
 
 const SUGERIDAS = [
   "Mi pareja me golpeó. ¿Qué puedo hacer?",
-  "¿Cómo solicito una medida de protección?",
+  "No me quisieron recibir mi denuncia en el Ministerio Público.",
   "Publicaron fotos mías íntimas sin mi permiso.",
   "Mi exnovio me violenta psicológicamente.",
 ];
@@ -598,3 +598,4 @@ export default function App() {
     </div>
   );
 }
+
