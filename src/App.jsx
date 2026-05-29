@@ -10,7 +10,7 @@ const C = {
 
 const SUGERIDAS = [
   "Mi pareja me golpeó. ¿Qué puedo hacer?",
-  "No me quisieron recibir mi denuncia en el Ministerio Público.",
+  "¿El Ministerio Público no te recibió tu denuncia?",
   "Publicaron fotos mías íntimas sin mi permiso.",
   "Mi exnovio me violenta psicológicamente.",
 ];
