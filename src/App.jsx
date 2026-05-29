@@ -444,7 +444,7 @@ export default function App() {
               ))}
             </ul>
             <a
-              href="https://wa.me/522228633646?text=Hola%20buen%20dia,%20quisiera%20solicitar%20un%20escrito%20urgente"
+              href="https://wa.me/522228633646?text=Hola%20buen%20d%C3%ADa,%20quisiera%20solicitar%20un%20escrito%20urgente"
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-block", marginTop: "28px",
@@ -489,7 +489,7 @@ export default function App() {
             </div>
             <div style={{ borderTop: `1px solid ${C.gold}55`, paddingTop: "24px", display: "flex", justifyContent: "flex-end" }}>
               <a
-                href="https://wa.me/522228633646?text=Hola%20buen%20dia,%20quisiera%20agendar%20una%20videoconsulta"
+                href="https://wa.me/522228633646?text=Hola%20buen%20d%C3%ADa,%20quisiera%20agendar%20una%20videoconsulta"
                 target="_blank" rel="noopener noreferrer"
                 style={{
                   background: C.charcoal, color: C.cream, textDecoration: "none",
