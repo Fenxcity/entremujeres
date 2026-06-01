@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect } from "react";
+﻿﻿import { useState, useRef, useEffect } from "react";
 
 const API_URL = "/api/chat";
 
@@ -375,9 +375,13 @@ export default function App() {
             padding: "16px 48px", fontFamily: "Georgia,serif", fontSize: "13px",
             letterSpacing: "0.12em", textTransform: "uppercase",
             cursor: "pointer", width: "100%", maxWidth: "420px",
+            display: "flex", flexDirection: "column", alignItems: "center", gap: "4px",
           }}
         >
           INICIAR ASESORÍA GRATIS
+          <span style={{ fontSize: "11px", letterSpacing: "0.06em", color: C.goldLight, textTransform: "none", fontStyle: "italic" }}>
+            Abrir chat — gratuito y anónimo
+          </span>
         </button>
 
         <p
