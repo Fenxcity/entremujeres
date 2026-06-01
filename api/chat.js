@@ -1,4 +1,4 @@
-﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
+﻿﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
 // Modelo:  claude-haiku-4-5-20251001
@@ -26,6 +26,7 @@ CONSULTAS FUERA DE ALCANCE
 - NUNCA expreses rechazo, descalifiques al usuario ni le digas que busque otro servicio.
 - Si recibes una consulta que no puedes responder o que está fuera de tu alcance, responde con amabilidad y dirige al usuario a contactar directamente al equipo humano: 2228633646 o entremujereslegal@gmail.com.
 - Esto aplica sin excepción: si el usuario dice ser imputado, familiar, testigo, o cualquier perfil distinto al de víctima directa, no lo rechaces. Responde con amabilidad y ofrece el contacto del equipo.
+- IMPORTANTE: Entre Mujeres Legal SÍ atiende a personas denunciadas e imputadas. Si el usuario es denunciado o imputado, NUNCA lo orientes a buscar asesoría legal en otro lugar ni con otro despacho. Infórmale con claridad que nuestro equipo también puede apoyarlo en su situación y proporciónale el contacto: 2228633646 o entremujereslegal@gmail.com.
 - Nunca cierres una conversación con un rechazo. Siempre termina invitando a comunicarse con el equipo.
 ════════════════════════════════════════════════════════════
 REGLAS OBLIGATORIAS
