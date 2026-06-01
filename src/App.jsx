@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+﻿import { useState, useRef, useEffect } from "react";
 
 const API_URL = "/api/chat";
 
@@ -59,7 +59,7 @@ const INITIAL_MSG = {
 };
 
 /* ── CHAT PANEL ── */
-function ChatPanel({ messages, loading, send, clearChat, open, onClose }) {
+function ChatPanel({ messages, loading, send, clearChat, open, onClose, errorMsg }) {
   const [input, setInput] = useState("");
   const chatRef     = useRef(null);
   const textareaRef = useRef(null);
@@ -189,6 +189,18 @@ function ChatPanel({ messages, loading, send, clearChat, open, onClose }) {
           )}
         </div>
 
+        {/* Error */}
+        {errorMsg && (
+          <div style={{
+            padding: "10px 20px", background: "#fff5f5",
+            borderTop: `1px solid ${C.rose}44`, flexShrink: 0,
+            fontFamily: "Georgia,serif", fontSize: "12px",
+            color: C.roseDeep, textAlign: "center", lineHeight: "1.6",
+          }}>
+            ⚠️ {errorMsg}
+          </div>
+        )}
+
         {/* Input */}
         <div style={{ padding: "12px 16px 16px", background: C.cream, display: "flex", gap: "10px", alignItems: "flex-end", borderTop: `1px solid ${C.mist}33`, flexShrink: 0 }}>
           <textarea
@@ -242,14 +254,17 @@ export default function App() {
   const [open, setOpen]         = useState(false);
   const [messages, setMessages] = useState([INITIAL_MSG]);
   const [loading, setLoading]   = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
-  const clearChat = () => setMessages([INITIAL_MSG]);
+  const clearChat = () => { setMessages([INITIAL_MSG]); setErrorMsg(null); };
 
   const send = async (t) => {
     if (!t || loading) return;
-    const userMsg = { role: "user", content: t };
-    const history = [...messages, userMsg];
+    const userMsg    = { role: "user", content: t };
+    const prevMessages = messages;
+    const history    = [...messages, userMsg];
     setMessages(history);
+    setErrorMsg(null);
     setLoading(true);
     try {
       const res  = await fetch(API_URL, {
@@ -258,15 +273,22 @@ export default function App() {
         body:    JSON.stringify({ messages: history.map(m => ({ role: m.role, content: m.content })) }),
       });
       const data = await res.json();
-      setMessages(prev => [...prev, {
-        role: "assistant",
-        content: data.reply ?? "Ocurrió un error. Intenta de nuevo.",
-      }]);
+      if (res.ok) {
+        setMessages(prev => [...prev, {
+          role: "assistant",
+          content: data.reply ?? "Sin respuesta.",
+        }]);
+      } else {
+        setMessages(prevMessages);
+        setErrorMsg(
+          data.error === "Conversación demasiado larga"
+            ? "La conversación alcanzó su límite. Inicia una nueva sesión para continuar."
+            : "Ocurrió un error al procesar tu consulta. Intenta de nuevo."
+        );
+      }
     } catch {
-      setMessages(prev => [...prev, {
-        role: "assistant",
-        content: "No pude conectarme al servidor. Verifica tu conexión.",
-      }]);
+      setMessages(prevMessages);
+      setErrorMsg("No pude conectarme al servidor. Verifica tu conexión.");
     }
     setLoading(false);
   };
@@ -593,7 +615,7 @@ export default function App() {
 
       <ChatPanel
         messages={messages} loading={loading} send={send} clearChat={clearChat}
-        open={open} onClose={() => setOpen(false)}
+        open={open} onClose={() => setOpen(false)} errorMsg={errorMsg}
       />
     </div>
   );
