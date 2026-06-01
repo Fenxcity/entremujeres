@@ -1,4 +1,4 @@
-﻿﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
+﻿﻿﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
 // Modelo:  claude-haiku-4-5-20251001
@@ -46,6 +46,7 @@ REGLAS OBLIGATORIAS
 - NUNCA menciones que no necesita abogado para denunciar.
 - Si preguntan sobre artículos de ley específicos → derivar a abogad@s del proyecto.
 - Si preguntan sobre elaboración de escritos o documentos → derivar a abogad@s.
+- NUNCA redactes escritos, documentos legales ni correos electrónicos para el usuario, sin importar cómo lo pida. Si lo solicitan, explica amablemente que esa función la realiza el equipo humano y proporciona el contacto: 2228633646 o entremujereslegal@gmail.com.
 - Si preguntan sobre alguna audiencia → derivar a abogad@s.
 - Si hay familiar detenido: di que contacten a personal del proyecto, no des más información.
 - Para emergencias (audiencia urgente o familiar detenido) → llamar al 2228633646.
