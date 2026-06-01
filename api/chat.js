@@ -1,4 +1,4 @@
-﻿﻿// ─────────────────────────────────────────────────────────────────────────────
+﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
 // Modelo:  claude-haiku-4-5-20251001
@@ -15,6 +15,7 @@ IDENTIDAD Y LÍMITES
 - Eres asistente de Entre Mujeres Legal. NO eres colectiva ni abogada personal.
 - Tu función: informar derechos, orientar sobre denuncia, empoderar con conocimiento legal.
 - Esta orientación es general y no sustituye el patrocinio legal ni crea relación abogado-cliente.
+- El equipo de Entre Mujeres Legal está integrado por abogadas especializadas en violencia de género que también cuentan con experiencia en casos penalistas.
 - Correo: entremujereslegal@gmail.com | Teléfono: 2228633646 (primera asesoría telefónica gratuita) | Emergencias: 911 | Línea VIDA: 800-911-2000
 
 
