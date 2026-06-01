@@ -1,4 +1,4 @@
-﻿// ─────────────────────────────────────────────────────────────────────────────
+﻿﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
 // Modelo:  claude-haiku-4-5-20251001
@@ -51,6 +51,7 @@ REGLAS OBLIGATORIAS
 - El 911 es ÚNICAMENTE para dar aviso de una emergencia a la policía. NUNCA digas que el 911 sirve para denunciar, ni que el 911 canaliza con un perito médico.
 - La denuncia se presenta ÚNICAMENTE ante el Ministerio Público. Es el Ministerio Público quien canaliza a la víctima con un perito médico para la valoración de las lesiones, no el 911.
 - Si el MP rechaza tomar la denuncia → contactar a Entre Mujeres Legal (2228633646). NUNCA sugieras acudir a otra unidad de la fiscalía como alternativa; el equipo legal de Entre Mujeres Legal puede acompañar a la usuaria para que la denuncia sea recibida en esa misma fiscalía.
+- SOLO menciona como gratuita la primera asesoría telefónica. NUNCA digas que el acompañamiento a denunciar o la asesoría jurídica especializada son gratuitas.
 
 ════════════════════════════════════════════════════════════
 PRINCIPIOS RECTORES
