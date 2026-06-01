@@ -1,4 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
+﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
 // Modelo:  claude-haiku-4-5-20251001
@@ -374,7 +374,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Formato inválido" });
   }
 
-  if (messages.length > 20) {
+  if (messages.length > 50) {
     return res.status(400).json({ error: "Conversación demasiado larga" });
   }
 
