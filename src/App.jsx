@@ -233,6 +233,13 @@ function ChatPanel({ messages, loading, send, clearChat, open, onClose, errorMsg
           </button>
         </div>
 
+        {/* Aviso asesoría telefónica */}
+        <div style={{ background: C.cream, padding: "8px 24px", textAlign: "center", fontFamily: "Georgia,serif", fontSize: "11px", color: C.slate, borderTop: `1px solid ${C.mist}22`, flexShrink: 0, lineHeight: "1.5" }}>
+          ¿Tienes dudas con el chat? Llama al{" "}
+          <a href="tel:+522228633646" style={{ color: C.gold, textDecoration: "none", fontWeight: "bold" }}>222 863 3646</a>
+          {" "}— primera asesoría telefónica gratuita.
+        </div>
+
         {/* Disclaimer */}
         <div style={{ background: C.parchment, padding: "6px 24px", paddingBottom: "max(6px, env(safe-area-inset-bottom, 6px))", fontFamily: "Georgia,serif", fontSize: "10px", color: C.mist, borderTop: `1px solid ${C.mist}33`, flexShrink: 0 }}>
           Orientación general · No constituye patrocinio legal ni relación abogado-cliente
