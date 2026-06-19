@@ -28,8 +28,8 @@ export default function Avatar3D({ size = 72, onReady }) {
         renderer.setClearColor(0x000000, 0);
         mount.appendChild(renderer.domElement);
 
-        scene.add(new THREE.HemisphereLight(0xffffff, 0x3a3835, 2.6));
-        const key = new THREE.DirectionalLight(0xffffff, 2.4);
+        scene.add(new THREE.HemisphereLight(0xffffff, 0x3a3835, 3.0));
+        const key = new THREE.DirectionalLight(0xffffff, 2.8);
         key.position.set(2, 4, 3);
         scene.add(key);
         const fill = new THREE.DirectionalLight(0xC09A5B, 0.8);
@@ -43,18 +43,13 @@ export default function Avatar3D({ size = 72, onReady }) {
           (gltf) => {
             if (cancelled) return;
             model = gltf.scene;
-
-            const box = new THREE.Box3().setFromObject(model);
-            const center = box.getCenter(new THREE.Vector3());
-            const dim = box.getSize(new THREE.Vector3());
-            const h = dim.y || 1;
-            model.position.x -= center.x;
-            model.position.z -= center.z;
-            model.position.y -= box.min.y; // pies en y = 0
             scene.add(model);
 
-            camera.position.set(0, h * 0.66, h * 1.05);
-            camera.lookAt(0, h * 0.6, 0);
+            // RobotExpressive viene de pie con los pies en y≈0 y la cabeza en
+            // y≈4.4. Encuadre de cuerpo completo, centrado y con margen
+            // (valores verificados en runtime con la silueta renderizada).
+            camera.position.set(0, 2.2, 9.3);
+            camera.lookAt(0, 2.2, 0);
 
             mixer = new THREE.AnimationMixer(model);
             const clips = gltf.animations || [];
