@@ -291,23 +291,58 @@ function ChatLauncher({ onOpen }) {
           pointerEvents: "none",
         }} />
 
-        {/* Ilustración de la asesora */}
+        {/* Ilustración animada de la asesora */}
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
           <defs><clipPath id="emlAvatarClip"><circle cx="100" cy="100" r="96" /></clipPath></defs>
           <circle cx="100" cy="100" r="96" fill="#2C2A27" />
           <g clipPath="url(#emlAvatarClip)">
-            <path d="M40 200 C40 158 64 140 100 140 C136 140 160 158 160 200 Z" fill="#3a3835" />
-            <path d="M100 142 L90 200 L110 200 Z" fill="#F8F4EF" />
-            <rect x="92" y="120" width="16" height="26" rx="8" fill="#E8B796" />
-            <circle cx="100" cy="98" r="30" fill="#F0C5A6" />
-            <path d="M68 100 C66 70 88 58 100 58 C112 58 134 70 132 100 C130 84 120 80 120 80 C118 92 116 96 116 96 C116 78 108 74 100 74 C92 74 84 78 84 96 C84 96 82 92 80 80 C80 80 70 84 68 100 Z" fill="#4a3528" />
-            <path d="M72 96 A28 28 0 0 1 128 96" fill="none" stroke="#C09A5B" strokeWidth="5" />
-            <rect x="67" y="92" width="9" height="15" rx="4" fill="#C09A5B" />
-            <path d="M72 100 C66 116 80 122 90 120" fill="none" stroke="#C09A5B" strokeWidth="4" strokeLinecap="round" />
-            <circle cx="91" cy="120" r="3" fill="#C09A5B" />
-            <circle cx="91" cy="98" r="2.5" fill="#2C2A27" />
-            <circle cx="109" cy="98" r="2.5" fill="#2C2A27" />
-            <path d="M93 108 Q100 113 107 108" fill="none" stroke="#9a5b4a" strokeWidth="2.5" strokeLinecap="round" />
+
+            {/* Respiración: todo el cuerpo sube y baja suavemente */}
+            <g>
+              <animateTransform attributeName="transform" type="translate"
+                values="0 0; 0 -2.5; 0 0" keyTimes="0;0.5;1" dur="3.6s"
+                calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+                repeatCount="indefinite" />
+
+              {/* Saco, blusa y cuello */}
+              <path d="M40 205 C40 158 64 140 100 140 C136 140 160 158 160 205 Z" fill="#3a3835" />
+              <path d="M100 142 L90 205 L110 205 Z" fill="#F8F4EF" />
+              <rect x="92" y="120" width="16" height="26" rx="8" fill="#E8B796" />
+
+              {/* Cabeza: leve balanceo */}
+              <g>
+                <animateTransform attributeName="transform" type="rotate"
+                  values="-2 100 124; 2 100 124; -2 100 124" keyTimes="0;0.5;1" dur="6s"
+                  calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+                  repeatCount="indefinite" />
+
+                <circle cx="100" cy="98" r="30" fill="#F0C5A6" />
+                <path d="M68 100 C66 70 88 58 100 58 C112 58 134 70 132 100 C130 84 120 80 120 80 C118 92 116 96 116 96 C116 78 108 74 100 74 C92 74 84 78 84 96 C84 96 82 92 80 80 C80 80 70 84 68 100 Z" fill="#4a3528" />
+                <path d="M72 96 A28 28 0 0 1 128 96" fill="none" stroke="#C09A5B" strokeWidth="5" />
+                <rect x="67" y="92" width="9" height="15" rx="4" fill="#C09A5B" />
+                <path d="M72 100 C66 116 80 122 90 120" fill="none" stroke="#C09A5B" strokeWidth="4" strokeLinecap="round" />
+                <circle cx="91" cy="120" r="3" fill="#C09A5B" />
+
+                {/* Ojos */}
+                <circle cx="91" cy="98" r="2.5" fill="#2C2A27" />
+                <circle cx="109" cy="98" r="2.5" fill="#2C2A27" />
+
+                {/* Párpados (parpadeo) */}
+                <ellipse cx="91" cy="98" rx="3.4" ry="0" fill="#F0C5A6">
+                  <animate attributeName="ry" values="0;0;3.4;0" keyTimes="0;0.93;0.965;1" dur="4.5s" repeatCount="indefinite" />
+                </ellipse>
+                <ellipse cx="109" cy="98" rx="3.4" ry="0" fill="#F0C5A6">
+                  <animate attributeName="ry" values="0;0;3.4;0" keyTimes="0;0.93;0.965;1" dur="4.5s" repeatCount="indefinite" />
+                </ellipse>
+
+                {/* Boca: sutil movimiento al "hablar" */}
+                <path fill="none" stroke="#9a5b4a" strokeWidth="2.5" strokeLinecap="round" d="M93 108 Q100 113 107 108">
+                  <animate attributeName="d"
+                    values="M93 108 Q100 113 107 108; M93 108 Q100 116 107 108; M93 108 Q100 113 107 108"
+                    keyTimes="0;0.5;1" dur="2.8s" repeatCount="indefinite" />
+                </path>
+              </g>
+            </g>
           </g>
           <circle cx="100" cy="100" r="93" fill="none" stroke="#C09A5B" strokeWidth="3" />
         </svg>
