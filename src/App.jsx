@@ -1,4 +1,5 @@
 ﻿﻿import { useState, useRef, useEffect } from "react";
+import Avatar3D from "./components/Avatar3D.jsx";
 
 const API_URL = "/api/chat";
 
@@ -258,6 +259,20 @@ function ChatPanel({ messages, loading, send, clearChat, open, onClose, errorMsg
 
 /* ── BOTÓN FLOTANTE (LAUNCHER) ── */
 function ChatLauncher({ onOpen }) {
+  const AVATAR = 72;
+  const [show3d, setShow3d] = useState(false);
+  const [ready3d, setReady3d] = useState(false);
+
+  // Carga diferida del 3D: no compite con el render inicial del sitio
+  useEffect(() => {
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(() => setShow3d(true), { timeout: 3000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(() => setShow3d(true), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div style={{
       position: "fixed", bottom: "24px", right: "24px", zIndex: 9998,
@@ -278,7 +293,7 @@ function ChatLauncher({ onOpen }) {
         onClick={onOpen}
         aria-label="Abrir chat con la asesora virtual"
         style={{
-          position: "relative", width: "66px", height: "66px",
+          position: "relative", width: `${AVATAR}px`, height: `${AVATAR}px`,
           borderRadius: "50%", border: "none", padding: 0, cursor: "pointer",
           background: "transparent", flexShrink: 0,
           filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.35))",
@@ -291,7 +306,10 @@ function ChatLauncher({ onOpen }) {
           pointerEvents: "none",
         }} />
 
-        {/* Ilustración animada de la asesora */}
+        {/* Avatar: placeholder SVG animado + 3D superpuesto */}
+        <div style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, opacity: ready3d ? 0 : 1, transition: "opacity 0.6s ease" }}>
+        {/* Ilustración animada de la asesora (placeholder) */}
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
           <defs><clipPath id="emlAvatarClip"><circle cx="100" cy="100" r="96" /></clipPath></defs>
           <circle cx="100" cy="100" r="96" fill="#2C2A27" />
@@ -346,6 +364,13 @@ function ChatLauncher({ onOpen }) {
           </g>
           <circle cx="100" cy="100" r="93" fill="none" stroke="#C09A5B" strokeWidth="3" />
         </svg>
+          </div>
+          {show3d && (
+            <div style={{ position: "absolute", inset: 0, opacity: ready3d ? 1 : 0, transition: "opacity 0.6s ease" }}>
+              <Avatar3D size={AVATAR} onReady={() => setReady3d(true)} />
+            </div>
+          )}
+        </div>
 
         {/* Punto "en línea" */}
         <span style={{
