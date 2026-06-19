@@ -256,6 +256,84 @@ function ChatPanel({ messages, loading, send, clearChat, open, onClose, errorMsg
   );
 }
 
+/* ── BOTÓN FLOTANTE (LAUNCHER) ── */
+function ChatLauncher({ onOpen }) {
+  return (
+    <div style={{
+      position: "fixed", bottom: "24px", right: "24px", zIndex: 9998,
+      display: "flex", alignItems: "center", gap: "12px",
+    }}>
+      {/* Etiqueta */}
+      <div className="eml-launcher-label" style={{
+        background: C.charcoal, color: C.cream,
+        fontFamily: "Georgia,serif", fontSize: "13px", fontStyle: "italic",
+        padding: "8px 14px", borderRadius: "20px 20px 4px 20px",
+        boxShadow: "0 4px 16px rgba(0,0,0,0.25)", whiteSpace: "nowrap",
+      }}>
+        ¿Necesitas ayuda? <span style={{ color: C.goldLight }}>Chatea conmigo</span>
+      </div>
+
+      {/* Avatar / botón */}
+      <button
+        onClick={onOpen}
+        aria-label="Abrir chat con la asesora virtual"
+        style={{
+          position: "relative", width: "66px", height: "66px",
+          borderRadius: "50%", border: "none", padding: 0, cursor: "pointer",
+          background: "transparent", flexShrink: 0,
+          filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.35))",
+        }}
+      >
+        {/* Anillo pulsante */}
+        <span style={{
+          position: "absolute", inset: 0, borderRadius: "50%",
+          border: `2px solid ${C.gold}`, animation: "eml-pulse 2s infinite",
+          pointerEvents: "none",
+        }} />
+
+        {/* Ilustración de la asesora */}
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+          <defs><clipPath id="emlAvatarClip"><circle cx="100" cy="100" r="96" /></clipPath></defs>
+          <circle cx="100" cy="100" r="96" fill="#2C2A27" />
+          <g clipPath="url(#emlAvatarClip)">
+            <path d="M40 200 C40 158 64 140 100 140 C136 140 160 158 160 200 Z" fill="#3a3835" />
+            <path d="M100 142 L90 200 L110 200 Z" fill="#F8F4EF" />
+            <rect x="92" y="120" width="16" height="26" rx="8" fill="#E8B796" />
+            <circle cx="100" cy="98" r="30" fill="#F0C5A6" />
+            <path d="M68 100 C66 70 88 58 100 58 C112 58 134 70 132 100 C130 84 120 80 120 80 C118 92 116 96 116 96 C116 78 108 74 100 74 C92 74 84 78 84 96 C84 96 82 92 80 80 C80 80 70 84 68 100 Z" fill="#4a3528" />
+            <path d="M72 96 A28 28 0 0 1 128 96" fill="none" stroke="#C09A5B" strokeWidth="5" />
+            <rect x="67" y="92" width="9" height="15" rx="4" fill="#C09A5B" />
+            <path d="M72 100 C66 116 80 122 90 120" fill="none" stroke="#C09A5B" strokeWidth="4" strokeLinecap="round" />
+            <circle cx="91" cy="120" r="3" fill="#C09A5B" />
+            <circle cx="91" cy="98" r="2.5" fill="#2C2A27" />
+            <circle cx="109" cy="98" r="2.5" fill="#2C2A27" />
+            <path d="M93 108 Q100 113 107 108" fill="none" stroke="#9a5b4a" strokeWidth="2.5" strokeLinecap="round" />
+          </g>
+          <circle cx="100" cy="100" r="93" fill="none" stroke="#C09A5B" strokeWidth="3" />
+        </svg>
+
+        {/* Punto "en línea" */}
+        <span style={{
+          position: "absolute", top: "3px", right: "3px",
+          width: "14px", height: "14px", borderRadius: "50%",
+          background: "#4CAF7D", border: "2px solid #fff", pointerEvents: "none",
+        }} />
+      </button>
+
+      <style>{`
+        @keyframes eml-pulse {
+          0%   { transform: scale(1);    opacity: 0.7; }
+          70%  { transform: scale(1.4);  opacity: 0;   }
+          100% { transform: scale(1.4);  opacity: 0;   }
+        }
+        @media (max-width: 640px) {
+          .eml-launcher-label { display: none !important; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 /* ── APP PRINCIPAL ── */
 export default function App() {
   const [open, setOpen]         = useState(false);
@@ -623,6 +701,8 @@ export default function App() {
           .eml-footer-grid { grid-template-columns: 1fr !important; padding: 40px 20px !important; }
         }
       `}</style>
+
+      {!open && <ChatLauncher onOpen={() => setOpen(true)} />}
 
       <ChatPanel
         messages={messages} loading={loading} send={send} clearChat={clearChat}
