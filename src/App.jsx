@@ -285,7 +285,7 @@ function ChatLauncher({ onOpen }) {
         padding: "8px 14px", borderRadius: "20px 20px 4px 20px",
         boxShadow: "0 4px 16px rgba(0,0,0,0.25)", whiteSpace: "nowrap",
       }}>
-        ¿Necesitas ayuda? <span style={{ color: C.goldLight }}>Chatea conmigo</span>
+        ¿Necesitas ayuda? <span style={{ color: C.goldLight }}>Pregúntame</span>
       </div>
 
       {/* Avatar / botón */}
