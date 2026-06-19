@@ -30,14 +30,17 @@ export default function Avatar3D({ size = 72, onReady }) {
         renderer.setClearColor(0x000000, 0);
         mount.appendChild(renderer.domElement);
 
-        scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-        scene.add(new THREE.HemisphereLight(0xffffff, 0x3a3835, 2.4));
-        const key = new THREE.DirectionalLight(0xffffff, 2.6);
-        key.position.set(2, 3, 5);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+        scene.add(new THREE.HemisphereLight(0xfff6ec, 0x2a2622, 1.6));
+        const key = new THREE.DirectionalLight(0xffffff, 2.4);
+        key.position.set(2.5, 3, 5);
         scene.add(key);
-        const fill = new THREE.DirectionalLight(0xffffff, 1.0);
-        fill.position.set(-3, 0, 3);
+        const fill = new THREE.DirectionalLight(0xbfe0ff, 0.7);
+        fill.position.set(-3, 0.5, 2.5);
         scene.add(fill);
+        const rim = new THREE.DirectionalLight(0xc09a5b, 1.1);
+        rim.position.set(-1.5, 2, -3);
+        scene.add(rim);
 
         avatar = buildFemaleAvatar(THREE);
         scene.add(avatar.group);
@@ -74,7 +77,8 @@ export default function Avatar3D({ size = 72, onReady }) {
       ref={mountRef}
       style={{
         width: size, height: size, borderRadius: "50%",
-        overflow: "hidden", background: "#2C2A27",
+        overflow: "hidden",
+        background: "radial-gradient(circle at 50% 38%, #46423d 0%, #2C2A27 70%)",
         boxShadow: "inset 0 0 0 3px #C09A5B",
       }}
     />
