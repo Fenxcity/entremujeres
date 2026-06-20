@@ -242,7 +242,7 @@ function ChatPanel({ messages, loading, send, clearChat, open, onClose, errorMsg
         </div>
 
         {/* Disclaimer */}
-        <div style={{ background: C.parchment, padding: "6px 24px", paddingBottom: "max(6px, env(safe-area-inset-bottom, 6px))", fontFamily: "Georgia,serif", fontSize: "10px", color: C.mist, borderTop: `1px solid ${C.mist}33`, flexShrink: 0 }}>
+        <div style={{ background: C.parchment, padding: "6px 24px", paddingBottom: "max(6px, env(safe-area-inset-bottom, 6px))", fontFamily: "Georgia,serif", fontSize: "10px", color: C.mist, borderTop: `1px solid ${C.mist}33`, flexShrink: 0, textAlign: "center" }}>
           Orientación general · No constituye patrocinio legal ni relación abogado-cliente
         </div>
       </div>
