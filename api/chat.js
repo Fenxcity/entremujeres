@@ -1,7 +1,7 @@
 ﻿﻿﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
-// Modelo:  claude-haiku-4-5-20251001
+// Modelo:  claude-sonnet-5-5
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { createSign } from 'crypto';
@@ -122,6 +122,32 @@ LENOCINIO: Explotar económicamente a persona mediante comercio carnal, inducir 
 SUSTRACCIÓN DE MENOR: Retención ilegal de menores, sin cumplir la resolución judicial de custodia o convivencia. Afecta derechos de custodia y convivencia.
 
 ABANDONO DE PERSONA / INCUMPLIMIENTO DE ALIMENTOS: Abandono de persona que depende económicamente. Incumplimiento doloso de obligaciones alimentarias. Pena: 6 meses–3 años o multa. Si se coloca dolosamente en insolvencia para eludir alimentos: 6 meses–2 años.
+
+TEXTO LEGAL DE REFERENCIA — ABANDONO DE PERSONAS E INCUMPLIMIENTO DE LA OBLIGACIÓN ALIMENTARIA (Código Penal del Estado de Puebla, artículos 346 a 354 Quater). Este texto es solo para tu conocimiento interno y precisión: recuerda que NUNCA debes citar números de artículo al responder a la usuaria (regla de IDENTIDAD Y LÍMITES / REGLAS OBLIGATORIAS ya establecida).
+
+Artículo 346 Al que abandone a una niña, niño o adolescente incapaz de cuidarse a sí mismo, a una persona adulta mayor, a una persona enferma o a una persona con discapacidad, teniendo obligación de cuidarlos se le impondrá de tres meses a cinco años de prisión y se le privará de la patria potestad o de la tutela, si ejerciere uno de esos cargos. Artículo 346 Bis596 A quien abandone a una mujer embarazada, y sin causa justificada incumpla las obligaciones de prestar asistencia económica y alimentos durante el embarazo y una vez nacido el o la menor; se le impondrán de nueve meses a seis años de prisión, además de la reparación del daño y el pago de alimentos para el recién nacido y la madre en los casos que procedan.
+
+Artículo 347 Al que, sin motivo justificado, abandonare a quien tiene derecho de recibir alimentos de éste, sin recursos para atender sus necesidades de subsistencia, se le impondrán de seis meses a cuatro años de prisión o de noventa a trescientas sesenta Unidades de Medida y Actualización y suspensión o pérdida de los derechos de familia. Para los efectos de este artículo, se tendrá por consumado el delito aun cuando él o los acreedores alimentarios se dejen al cuidado o reciban ayuda de un tercero.
+
+Artículo 348 El delito de abandono de personas se perseguirá a petición del ofendido salvo que se trate de menores o incapaces sin representación, en cuyo caso el Ministerio Público actuará de oficio.
+
+Artículo 349 Se deroga. Artículo 350 601 Al que encuentre abandonado en cualquier sitio a un menor incapaz de cuidarse a sí mismo, o a una persona herida, inválida o amenazada de un peligro cualquiera y no diere aviso inmediato a la autoridad u omitiere prestarle el auxilio necesario, cuando pudiere hacerlo sin riesgo personal, se le impondrán de uno a seis meses de prisión o multa de una a diez Unidades de Medida y Actualización.
+
+Artículo 351 El automovilista, motorista, conductor de un vehículo cualquiera, ciclista o jinete que dejare en estado de abandono, sin prestarle o facilitarle asistencia y el cuidado que desde luego necesite, a una persona a quien hubiere atropellado por imprudencia o accidente, será sancionado con prisión de un mes a dos años, independientemente de la sanción aplicable por el daño causado en el atropellamiento.
+
+Artículo 352 Al que abandone a una persona, incapaz de valerse por sí misma, teniendo aquella obligación de cuidar a ésta, se le impondrá de dos meses a seis años de prisión y multa de cinco a cincuenta Unidades de Medida y Actualización.
+
+Artículo 353 Al que abandone a un menor de siete años, en una institución de asistencia o lo entregue a cualquier otra persona, sin la anuencia de quien se lo confió o de la autoridad, en su defecto, se le sancionará con prisión de uno a cuatro meses y multa de cinco a cincuenta Unidades de Medida y Actualización.
+
+Artículo 354 Si en los supuestos previstos por los artículos que forman esta sección, se causare otro daño al ofendido, se impondrá además, al autor del delito o delitos cometidos, la sanción que corresponda a ese daño.
+
+SECCIÓN TERCERA — INCUMPLIMIENTO DE LA OBLIGACIÓN ALIMENTARIA
+
+Artículo 354 Bis Al que renuncie a su empleo o solicite licencia sin goce de sueldo y sea éste el único medio de obtener ingresos o se coloque en estado de insolvencia, con el objeto de eludir el cumplimiento de las obligaciones alimentarias que a Ley determina, se le impondrá pena de prisión de uno a cuatro años y de doscientos a quinientas Unidades de Medida y Actualización, pérdida de los derechos de familia y pago, como reparación del daño de las cantidades no suministradas oportunamente.
+
+Artículo 354 Ter Se impondrá pena de tres meses a dos años de prisión y de doscientos a quinientas Unidades de Medida y Actualización a aquéllas personas que obligadas a informar acerca de los ingresos de quienes deban cumplir con todas las obligaciones señaladas en el artículo anterior, incumplan con la orden judicial de hacerlo o haciéndolo no lo hagan dentro del término ordenado por el Juez u omitan realizar de inmediato el descuento ordenado.
+
+Artículo 354 Quater En el delito de incumplimiento de la obligación alimentaria, se aplicarán las siguientes disposiciones: I.- Si el procesado paga las pensiones alimentarias que deba, decretadas por un Juez de lo Familiar o Civil, en su caso, y si además deposita en favor del acreedor alimentario, el importe de las tres mensualidades siguientes, se sobreseerá el proceso; y II.- El sobreseimiento a que se refiere la fracción anterior se dictará sin perjuicio de considerar al deudor alimentario como reincidente o como habitual, si incurre una o más veces en este delito.
 
 CIBERACOSO / LEY OLIMPIA: Difusión no consentida de imágenes íntimas, hostigamiento, intimidación o amenazas a través de medios digitales y redes sociales. El Estado puede ordenar medidas cautelares para bajar el contenido.
 
@@ -424,7 +450,7 @@ export default async function handler(req, res) {
         "content-type":       "application/json",
       },
       body: JSON.stringify({
-        model:      "claude-haiku-4-5-20251001",
+        model:      "claude-sonnet-5-5",
         max_tokens: 1024,
         system:     SYSTEM_PROMPT,
         messages:   messages,
