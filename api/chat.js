@@ -1,7 +1,7 @@
 ﻿﻿﻿﻿﻿// ─────────────────────────────────────────────────────────────────────────────
 // Entre Mujeres Legal — Backend API
 // Archivo: entremujeres-backend/api/chat.js
-// Modelo:  claude-sonnet-5-5
+// Modelo:  claude-haiku-4-5-20251001
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { createSign } from 'crypto';
@@ -450,7 +450,7 @@ export default async function handler(req, res) {
         "content-type":       "application/json",
       },
       body: JSON.stringify({
-        model:      "claude-sonnet-5-5",
+        model:      "claude-haiku-4-5-20251001",
         max_tokens: 1024,
         system:     SYSTEM_PROMPT,
         messages:   messages,
