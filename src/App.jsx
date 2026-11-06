@@ -524,7 +524,7 @@ export default function App() {
           }}
         >
           INICIAR ASESORÍA GRATIS
-          <span style={{ fontSize: "11px", letterSpacing: "0.06em", color: C.goldLight, textTransform: "none", fontStyle: "italic" }}>
+          <span data-nosnippet="" style={{ fontSize: "11px", letterSpacing: "0.06em", color: C.goldLight, textTransform: "none", fontStyle: "italic" }}>
             Abrir chat — gratuito y anónimo
           </span>
         </button>
